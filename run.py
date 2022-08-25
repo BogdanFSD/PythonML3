@@ -1,6 +1,15 @@
 def greeting_screen():
     print("Welcome to a Fun Car Quiz! \nAre you ready to check your knowledge?")
     print("There are total of 4 question and 4 answers to each of them. Once you are done with all question you will receive your score.")
+    print(r"""
+                                                ______--------___
+                                        /|             / |
+                            o___________|_\__________/__|
+                            ]|___     |  |=   ||  =|___  |"
+                            //   \\    |  |____||_///   \\|"
+                            |  X  |\--------------/|  X  |\"
+                            \___/       1924        \___/
+        """)
     
 
     while True:
