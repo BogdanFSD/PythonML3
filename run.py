@@ -1,6 +1,30 @@
+def greeting_screen():
+    print("Welcome to a Fun Car Quiz! \nAre you ready to check your knowledge?")
+    print("There are total of 4 question and 4 answers to each of them. Once you are done with all question you will receive your score.")
+    
+
+    while True:
+        start = input("Are you ready for a rummmmmmble? (Yes/No) ")
+        
+        if start.lower() == "yes":
+            print("great")
+            start_game()
+            return True
+
+        elif start.lower() == "no":
+            print("BYEEE")
+            quit()
+
+        else:
+            print("Invalid entry. Yes or No")
+
+            continue
+
+    start_game()
+
+
 #-----------------------------
 import random
-
 
 def start_game():
     """
@@ -10,15 +34,19 @@ def start_game():
     correct_attempts = 0
     question_num = 0 # index of questions to help me itarate 
 
-
     for question in questions:  #
         print("*" * 10) # just to make it more pleasant to for human eye
         print(question)
-        for choice in choices[question_num]: # question_num helps me to print correct list of answer to specific question
-            print(choice)                      # correct list of answer to specific question
-        attempt = input("Choose an answer A, B, C or D:")
-        attempt = attempt.upper() # so it is always uppercase 
-        attempts.append(attempt)
+        for choice in choices[question_num]: 
+            print(choice) 
+        
+        while True:                    
+            attempt = input("Choose an answer A, B, C or D: ").upper()
+            if attempt in {"A", "B", "C", "D"}:
+                attempts.append(attempt)
+                break
+            else:
+                print("Invalid entry")
 
         correct_attempts += correct_answers(questions.get(question), attempt)
         question_num += 1
@@ -28,7 +56,7 @@ def start_game():
 #-----------------------------
 def correct_answers(answer, attempt):
     if answer == attempt:
-        print("coorect")
+        print("corect")
         return 1
     else:
         print("wrong")
@@ -54,7 +82,7 @@ def show_points(correct_attempts, attempts):
 #-----------------------------
 def restart():
     while True:
-        response = input("Do you want to continue yes or no ")
+        response = input("Do you want to continue? (Yes/No) ")
         
         if response.lower() == "yes":
             print("great")
@@ -66,9 +94,8 @@ def restart():
             quit()
 
         else:
-            print("Invalid entry. yes or no")
-            
-            
+            print("Invalid entry. Yes or No")
+
             continue
 
         
@@ -76,22 +103,21 @@ def restart():
 #-----------------------------
 
 questions = {
-    "Who open tesla?": "B",
-    "Who discover America?": "C",
-    "What shape our planet?": "D"
-    
+    "Who Created tesla?": "A",
+    "What does BMW stand for?": "C",
+    "Which 2020 Audi model has the highest starting MSRP?": "D"
 }
 
 choices = [
-    ["A. Musk", "B. huan", "C. Valera", "D. Dido"],
-    ["A. vovo", "B. dfff", "C. Valera", "D. Dido"],
-    ["A. asdf", "B. huan", "C. fdsa", "D. Dido"]
+    ["A. Elon Musk", "B. Bill Gates", "C. Ford", "D. Johny Depp"],
+    ["A. Berlin Motor Works", "B. Brunswick Motor Works", "C. Bavarian Motor Works", "D. Borgoholzhausen Motor Works"],
+    ["A. Q7", "B. S6", "C. TTS", "D. A8"]
     
     ]
 
 
 if __name__ == "__main__":
-    start_game()
+    greeting_screen()
 
 
 
